@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPSmith: FPS ve oyun ayarları</title>
+<meta name="description" content="Ekran kartına ve işlemcine göre 100 bilgisayar oyununda hedef FPS&#x27;i tutturan en güzel grafik ayarlarını bul.">
+<meta name="theme-color" content="#0E1020">
+<meta property="og:title" content="FPSmith">
+<meta property="og:description" content="Ekran kartına ve işlemcine göre 100 bilgisayar oyununda hedef FPS&#x27;i tutturan en güzel grafik ayarlarını bul.">
+<meta property="og:image" content="https://fpsmithapp.github.io/icon-512.png">
+<link rel="icon" href="../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<style>
+:root{--bg:#0E1020;--bg2:#121528;--panel:#161A30;--card:#181C34;--edge:#2A3058;--line:#23284A;--ink:#F2F4FA;--ink2:#E3E6F3;--dim:#B3B9D6;--dim2:#9AA1C6;--faint:#8D93B5;--acc:#FF8A1F;--acc2:#FFB15C;--on:#1A0E04;--green:#57E3A6;--d:'Chakra Petch',system-ui,sans-serif;--b:'Barlow Semi Condensed','Arial Narrow',system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:#E9ECF6;font-family:var(--b);font-size:18px;line-height:1.5}
+a{color:var(--acc2)}a:hover{color:#FFD08F}
+.wrap{max-width:1200px;margin:0 auto;padding-left:32px;padding-right:32px}
+h1,h2,h3{font-family:var(--d);font-weight:700;color:#F7F8FC;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 24px;font-family:var(--d);font-weight:700;font-size:18px;text-decoration:none;background:var(--acc);color:var(--on);border:0;cursor:pointer}
+.btn:hover{background:#FFA04A;color:var(--on)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid #3A4170;font-weight:600}
+.btn.soon{gap:8px;background:transparent;color:#C7CCE4;border:1px dashed #4A5288;font-weight:600;cursor:default}.btn.soon:hover{background:transparent;color:#C7CCE4}.btn.soon em{font-style:normal;color:var(--acc2)}
+.btn.ghost:hover{border-color:var(--acc);color:var(--ink)}
+:focus-visible{outline:2px solid var(--acc2);outline-offset:2px}
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(14,16,32,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;padding-top:14px;padding-bottom:14px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.logo b{font-family:var(--d);font-size:26px;letter-spacing:-.5px}.logo b span{color:var(--acc)}
+.links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 26px;margin-left:auto;font-weight:600}
+.links a{color:#C7CCE4;text-decoration:none}.links a:hover{color:var(--ink)}
+.links a.tool{color:var(--ink);border-bottom:2px solid var(--acc);padding-bottom:2px}
+.langsel{display:flex;align-items:center;gap:6px;border:1px solid #3A4170;padding:0 8px}
+.langsel select{background:transparent;color:var(--ink);border:0;font:600 16px var(--d);padding:9px 2px;cursor:pointer}
+.langsel select option{background:var(--panel)}
+.links .btn{min-height:44px;padding:10px 18px;font-size:16px}
+/* hero */
+.hero{display:flex;flex-wrap:wrap;gap:56px;align-items:center;padding-top:80px;padding-bottom:72px}
+.hero .txt{flex:1 1 480px;min-width:0}
+.eyebrow{margin:0 0 18px;font-family:var(--d);font-weight:600;font-size:15px;letter-spacing:3px;text-transform:uppercase;color:var(--acc)}
+.hero h1{font-size:clamp(40px,6vw,68px);line-height:1.03;letter-spacing:-1.5px}
+.hero h1 span{display:block}
+.lead{margin:26px 0 0;font-size:22px;color:#B9BFDA;max-width:560px}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.small{margin:18px 0 0;font-size:15px;color:var(--faint)}
+.card{flex:1 1 400px;min-width:0;background:var(--panel);border:1px solid var(--edge);padding:26px 28px}
+.card .meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:15px;color:var(--dim2)}
+.res{display:flex;align-items:flex-end;gap:18px;margin-top:14px}
+.res .num{font-family:var(--d);font-weight:700;font-size:84px;line-height:.9;color:var(--green)}
+.res .ok{font-family:var(--d);font-weight:700;font-size:20px;color:var(--green)}
+.res .sub{font-size:15px;color:var(--dim2)}
+.bar{height:8px;background:#262B4D;margin:18px 0 20px;position:relative}
+.bar i{position:absolute;left:0;top:0;bottom:0;width:72%;background:var(--green)}
+.bar u{position:absolute;left:48%;top:-5px;bottom:-5px;width:3px;background:var(--acc)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.row .n{font-weight:600;color:var(--ink2)}
+.row .v{display:flex;align-items:center;gap:10px;text-align:right}
+.row s{font-size:14px;color:#6F769C}
+.row b{font-family:var(--d);color:var(--ink2)}.row b.dn{color:var(--acc2)}.row b.up{color:var(--green)}
+/* sections */
+.facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.facts .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;padding-top:34px;padding-bottom:34px}
+.facts b{display:block;font-family:var(--d);font-size:44px;line-height:1;color:#F7F8FC}
+.facts span{display:block;margin-top:8px;color:#A9AFCF}
+section.sec{padding-top:96px;padding-bottom:40px}
+.sec h2{font-size:clamp(32px,4vw,44px);letter-spacing:-.8px}
+.sec .intro{margin:14px 0 0;color:var(--dim);max-width:660px}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;margin-top:40px}
+.steps div{border-top:3px solid var(--acc);padding-top:22px}
+.steps em{font-style:normal;font-family:var(--d);font-weight:700;font-size:18px;color:var(--acc)}
+.steps h3{margin:8px 0 10px;font-size:26px}
+.steps p{margin:0;color:var(--dim)}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:40px}
+.mode{padding:34px}
+.mode .k{font-family:var(--d);font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase}
+.mode h3{margin:10px 0 14px;font-size:32px}
+.mode p{margin:0 0 18px}.mode p.g{margin:0;font-size:15px}
+.mode.c{background:#17142A;border:1px solid #3A2E5C}.mode.c .k{color:#C9A7FF}.mode.c p{color:#C2BBDA}.mode.c p.g{color:#9A92B8}
+.mode.r{background:#10201C;border:1px solid #23493F}.mode.r .k{color:#5FE0B5}.mode.r p{color:#B6D3CA}.mode.r p.g{color:#8DB2A6}
+.games{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:56px}
+.games .wrap{padding-top:88px;padding-bottom:88px}
+.ghead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+.gsearch{display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--dim2)}
+.gsearch div{display:flex}
+.gsearch input{width:280px;max-width:60vw;padding:12px 14px;font:inherit;font-size:17px;color:var(--ink);background:var(--bg);border:1px solid #3A4170;border-right:0}
+.gsearch button{min-height:48px;padding:0 16px;font-size:16px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:36px}
+.ggrid a{background:var(--card);border:1px solid var(--edge);padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;min-height:104px;text-decoration:none}
+.ggrid a:hover{border-color:var(--acc)}
+.ggrid .t{display:flex;justify-content:space-between;font-size:14px;color:var(--faint)}
+.ggrid .t span:last-child{font-weight:600;color:var(--acc2)}.ggrid .t span.new{color:var(--green)}
+.ggrid b{font-family:var(--d);font-size:20px;line-height:1.15;color:var(--ink)}
+.more{margin:28px 0 0;font-weight:600}
+.brands{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px;margin-top:36px}
+.brands div{background:var(--panel);border:1px solid var(--edge);padding:20px}
+.brands i{display:block;height:6px;width:48px}
+.brands b{display:block;margin-top:16px;font-family:var(--d);font-size:20px;color:var(--ink)}
+.brands span{display:block;margin-top:4px;font-size:15px;color:var(--dim2)}
+.faq{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:0 56px;margin-top:28px}
+.faq div{border-top:1px solid var(--edge);padding:22px 0}
+.faq h3{margin:0 0 8px;font-size:21px}.faq p{margin:0;color:var(--dim)}
+.dl{background:var(--panel);border-top:3px solid var(--acc);margin-top:56px}
+.dl .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;padding-top:80px;padding-bottom:80px}
+.dl .t{flex:1 1 460px;min-width:0}
+.dl h2{font-size:clamp(32px,4vw,48px);line-height:1.05;letter-spacing:-1px}
+.dl p{margin:14px 0 0;color:var(--dim)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;padding-top:32px;padding-bottom:32px;font-size:15px;color:var(--faint)}
+footer span{display:flex;flex-wrap:wrap;gap:22px}footer a{color:#A9AFCF}
+@media (max-width:700px){.wrap{padding-left:16px;padding-right:16px}.hero{padding-top:44px;gap:36px}.lead{font-size:19px}.card{padding:20px}.res .num{font-size:68px}.links{gap:8px 14px;margin-left:auto}.links .sec-l{display:none}.links .btn{display:none}.logo b{font-size:22px}.logo svg{width:32px;height:32px}nav{padding-top:10px;padding-bottom:10px}section.sec{padding-top:64px}.mode{padding:24px}.faq{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="logo" href="./"><svg width="40" height="40" viewBox="0 0 42 42" aria-hidden="true"><path d="M10.4 33.6 A15 15 0 1 1 31.6 33.6" fill="none" stroke="#2C3250" stroke-width="4" stroke-linecap="round"/><path d="M10.4 33.6 A15 15 0 1 1 32.5 13.4" fill="none" stroke="#FF8A1F" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-40 21 23)"><rect x="21" y="21.7" width="11" height="2.6" rx="1.2" fill="#C9D0E2"/><rect x="31.5" y="17.5" width="5" height="11" rx="1.4" fill="#E9EDF7"/></g><circle cx="21" cy="23" r="4.2" fill="#D7DDEB"/><circle cx="21" cy="23" r="1.5" fill="#0E1020"/></svg><b><span>FPS</span>mith</b></a>
+    <div class="links">
+      <a href="#nasil" class="sec-l" data-i="navHow"></a>
+      <a href="#modlar" class="sec-l" data-i="navModes"></a>
+      <a href="#oyunlar" class="sec-l" data-i="navGames"></a>
+      <a href="#sss" class="sec-l" data-i="navFaq"></a>
+      <a href="arac.html" class="tool" data-i="navTool"></a>
+      <label class="langsel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA1C6" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><select id="lang" aria-label="Dil / Language"><option value="tr">Türkçe</option><option value="en">English</option><option value="fr">Français</option><option value="es">Español</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="ru">Русский</option><option value="zh">简体中文</option><option value="pt">Português</option></select></label>
+      <span class="btn soon" title="Google Play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.5l15.8-9.2a.6.6 0 0 0 0-1L4.9 2.3c-.4-.3-.9 0-.9.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Google Play · <em data-i="soon"></em></span>
+    </div>
+  </nav>
+</header>
+
+<main>
+<section class="wrap hero">
+  <div class="txt">
+    <p class="eyebrow" data-i="eyebrow"></p>
+    <h1><span data-i="h1a"></span><span data-i="h1b"></span></h1>
+    <p class="lead" data-i="lead"></p>
+    <div class="ctas"><a class="btn" href="arac.html" data-i="ctaTry"></a><span class="btn soon" title="Google Play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.5l15.8-9.2a.6.6 0 0 0 0-1L4.9 2.3c-.4-.3-.9 0-.9.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Google Play · <em data-i="soon"></em></span></div>
+    <p class="small" data-i="small"></p>
+  </div>
+  <div class="card" aria-label="Cyberpunk 2077 · RTX 5060">
+    <div class="meta"><span>Cyberpunk 2077 · 1440p</span><span>RTX 5060 · Ryzen 7 9800X3D</span></div>
+    <div class="res"><span class="num">90</span><div><div class="ok" data-i="hit"></div><div class="sub" id="hitSub"></div></div></div>
+    <div class="bar"><i></i><u></u></div>
+    <div id="heroRows"></div>
+  </div>
+</section>
+
+<section class="facts"><div class="wrap">
+  <div><b>100</b><span data-i="f1"></span></div>
+  <div><b>57</b><span data-i="f2"></span></div>
+  <div><b>300+</b><span data-i="f3"></span></div>
+  <div><b>9</b><span data-i="f4"></span></div>
+</div></section>
+
+<section class="wrap sec" id="nasil">
+  <h2 data-i="howTitle"></h2>
+  <div class="steps">
+    <div><em>01</em><h3 data-i="s1t"></h3><p data-i="s1"></p></div>
+    <div><em>02</em><h3 data-i="s2t"></h3><p data-i="s2"></p></div>
+    <div><em>03</em><h3 data-i="s3t"></h3><p data-i="s3"></p></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="modlar">
+  <h2 data-i="modesTitle"></h2>
+  <p class="intro" data-i="modesLead"></p>
+  <div class="modes">
+    <div class="mode c"><div class="k" data-i="cineK"></div><h3 data-i="cineT"></h3><p data-i="cine"></p><p class="g">Red Dead Redemption 2 · Cyberpunk 2077 · The Witcher 3 · Ghost of Tsushima</p></div>
+    <div class="mode r"><div class="k" data-i="compK"></div><h3 data-i="compT"></h3><p data-i="comp"></p><p class="g">Fortnite · Valorant · Counter-Strike 2 · Warzone · Apex Legends</p></div>
+  </div>
+</section>
+
+<section class="games" id="oyunlar"><div class="wrap">
+  <div class="ghead">
+    <div><h2 data-i="gamesTitle"></h2><p class="intro" data-i="gamesLead"></p></div>
+    <form class="gsearch" id="gform" action="arac.html"><label for="gq" data-i="search"></label><div><input type="search" id="gq" name="q" data-ph="searchPh" autocomplete="off"><button class="btn" type="submit" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></button></div></form>
+  </div>
+  <div class="ggrid"><a href="arac.html#g=Cyberpunk%202077"><span class="t"><span>2020</span><span class="" data-i="tagMenu"></span></span><b>Cyberpunk 2077</b></a><a href="arac.html#g=Red%20Dead%20Redemption%202"><span class="t"><span>2019</span><span class="" data-i="tagMenu"></span></span><b>Red Dead Redemption 2</b></a><a href="arac.html#g=Battlefield%206"><span class="t"><span>2025</span><span class="" data-i="tagMenu"></span></span><b>Battlefield 6</b></a><a href="arac.html#g=Fortnite"><span class="t"><span>2017</span><span class="" data-i="tagMenu"></span></span><b>Fortnite</b></a><a href="arac.html#g=Counter-Strike%202"><span class="t"><span>2023</span><span class="" data-i="tagMenu"></span></span><b>Counter-Strike 2</b></a><a href="arac.html#g=The%20Witcher%203%20Remastered"><span class="t"><span>2026</span><span class="new" data-i="tagNew"></span></span><b>The Witcher 3 Remastered</b></a><a href="arac.html#g=Crimson%20Desert"><span class="t"><span>2026</span><span class="" data-i="tagMenu"></span></span><b>Crimson Desert</b></a><a href="arac.html#g=Forza%20Horizon%206"><span class="t"><span>2026</span><span class="" data-i="tagMenu"></span></span><b>Forza Horizon 6</b></a><a href="arac.html#g=Ghost%20of%20Tsushima"><span class="t"><span>2024</span><span class="" data-i="tagMenu"></span></span><b>Ghost of Tsushima</b></a><a href="arac.html#g=Valorant"><span class="t"><span>2020</span><span class="" data-i="tagMenu"></span></span><b>Valorant</b></a><a href="arac.html#g=Elden%20Ring"><span class="t"><span>2022</span><span class="" data-i="tagMenu"></span></span><b>Elden Ring</b></a><a href="arac.html#g=Hogwarts%20Legacy"><span class="t"><span>2023</span><span class="" data-i="tagMenu"></span></span><b>Hogwarts Legacy</b></a></div>
+  <p class="more"><a href="arac.html" data-i="allGames"></a></p>
+</div></section>
+
+<section class="wrap sec">
+  <h2 data-i="hwTitle"></h2>
+  <p class="intro" data-i="hwLead"></p>
+  <div class="brands">
+    <div><i style="background:#76B900"></i><b>NVIDIA</b><span>RTX 50 <em data-i="incl"></em> · DLSS 4.5</span></div>
+    <div><i style="background:#E3202B"></i><b>AMD</b><span>RX 9000 <em data-i="incl"></em> · FSR 4.1</span></div>
+    <div><i style="background:#0071C5"></i><b>Intel</b><span data-i="arcNote"></span></div>
+    <div><i style="background:#1A9FFF"></i><b>Steam Deck</b><span>OLED · LCD</span></div>
+    <div><i style="background:#107C10"></i><b>ROG Xbox Ally</b><span>Ally X · Ally</span></div>
+    <div><i style="background:#7C4DFF"></i><b>Legion Go</b><span>Go 2 · Go S</span></div>
+  </div>
+</section>
+
+<section class="wrap sec" id="sss">
+  <h2 data-i="faqTitle"></h2>
+  <div class="faq">
+    <div><h3 data-i="q1"></h3><p data-i="a1"></p></div>
+    <div><h3 data-i="q2"></h3><p data-i="a2"></p></div>
+    <div><h3 data-i="q3"></h3><p data-i="a3"></p></div>
+    <div><h3 data-i="q4"></h3><p><span data-i="a4"></span> <a href="mailto:fatihgulle24@gmail.com">fatihgulle24@gmail.com</a></p></div>
+  </div>
+</section>
+
+<section class="dl" id="indir"><div class="wrap">
+  <div class="t"><h2 data-i="dlTitle"></h2><p data-i="dlLead"></p></div>
+  <div class="ctas" style="margin-top:0"><span class="btn soon" title="Google Play"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .5.5.8.9.5l15.8-9.2a.6.6 0 0 0 0-1L4.9 2.3c-.4-.3-.9 0-.9.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Google Play · <em data-i="soon"></em></span><a class="btn ghost" href="arac.html" data-i="ctaTry"></a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 FPSmith</span>
+  <span><a href="../privacy.html" data-i="privacy"></a><a href="mailto:fatihgulle24@gmail.com" data-i="contact"></a><span data-i="disclaimer"></span></span>
+</div></footer>
+
+<script>
+var S = {"navHome": ["Ana sayfa", "Home", "Accueil", "Inicio", "Home", "Startseite", "Главная", "首页", "Início"], "navHow": ["Nasıl çalışır", "How it works", "Fonctionnement", "Cómo funciona", "Come funziona", "So funktioniert es", "Как это работает", "使用方法", "Como funciona"], "navModes": ["Modlar", "Modes", "Modes", "Modos", "Modalità", "Modi", "Режимы", "模式", "Modos"], "navGames": ["Oyunlar", "Games", "Jeux", "Juegos", "Giochi", "Spiele", "Игры", "游戏", "Jogos"], "navFaq": ["SSS", "FAQ", "FAQ", "Preguntas", "FAQ", "FAQ", "Вопросы", "常见问题", "Perguntas"], "navTool": ["Ayar aracı", "Settings tool", "Outil de réglages", "Herramienta de ajustes", "Strumento impostazioni", "Einstellungs-Tool", "Подбор настроек", "设置工具", "Ferramenta de ajustes"], "navCta": ["Uygulamayı indir", "Get the app", "Télécharger l'app", "Descargar la app", "Scarica l'app", "App laden", "Скачать приложение", "下载应用", "Baixar o app"], "lang": ["Dil", "Language", "Langue", "Idioma", "Lingua", "Sprache", "Язык", "语言", "Idioma"], "eyebrow": ["PC · Dizüstü · El konsolu", "PC · Laptop · Handheld", "PC · Portable · Console portable", "PC · Portátil · Consola portátil", "PC · Portatile · Console portatile", "PC · Laptop · Handheld", "ПК · Ноутбук · Портативная консоль", "台式机 · 笔记本 · 掌机", "PC · Notebook · Portátil"], "h1a": ["Hedefin kadar FPS.", "The FPS you want.", "Les FPS que vous visez.", "Los FPS que buscas.", "Gli FPS che vuoi.", "Die FPS, die du willst.", "Столько FPS, сколько нужно.", "想要多少帧，就有多少帧。", "Os FPS que você quer."], "h1b": ["Gözünün göreceği en güzel ayarlarla.", "With the best settings your eyes can see.", "Avec les plus beaux réglages possibles.", "Con los ajustes más bonitos posibles.", "Con le impostazioni più belle possibili.", "Mit den schönsten möglichen Einstellungen.", "С самой красивой картинкой из возможных.", "同时画面尽可能好看。", "Com as configurações mais bonitas possíveis."], "lead": ["Ekran kartını ve işlemcini seç, istediğin FPS'i yaz. FPSmith, oyunun kendi menüsündeki sırayla hangi ayarı hangi kademede açman gerektiğini söylesin.", "Pick your graphics card and processor, type the FPS you want. FPSmith tells you which level to use for every setting, in the order of the game's own menu.", "Choisissez votre carte graphique et votre processeur, indiquez les FPS voulus. FPSmith vous dit quel niveau choisir pour chaque réglage, dans l'ordre du menu du jeu.", "Elige tu tarjeta gráfica y tu procesador e indica los FPS que quieres. FPSmith te dice qué nivel usar en cada ajuste, en el mismo orden que el menú del juego.", "Scegli scheda video e processore, indica gli FPS che vuoi. FPSmith ti dice quale livello usare per ogni impostazione, nell'ordine del menu del gioco.", "Wähle Grafikkarte und Prozessor, gib deine Ziel-FPS ein. FPSmith sagt dir für jede Einstellung die passende Stufe – in der Reihenfolge des Spielmenüs.", "Выберите видеокарту и процессор, укажите нужный FPS. FPSmith подскажет уровень каждой настройки в том же порядке, что и в меню игры.", "选择你的显卡和处理器，输入目标帧率。FPSmith 会按游戏菜单的顺序，告诉你每一项设置该开到哪一档。", "Escolha sua placa de vídeo e processador e informe os FPS desejados. O FPSmith diz qual nível usar em cada ajuste, na ordem do menu do próprio jogo."], "ctaPlay": ["Google Play'den indir", "Get it on Google Play", "Disponible sur Google Play", "Disponible en Google Play", "Disponibile su Google Play", "Jetzt bei Google Play", "Скачать в Google Play", "在 Google Play 下载", "Baixar no Google Play"], "ctaTry": ["Ayarlarını hesapla", "Calculate your settings", "Calculer vos réglages", "Calcula tus ajustes", "Calcola le impostazioni", "Einstellungen berechnen", "Подобрать настройки", "计算你的设置", "Calcular seus ajustes"], "small": ["Ücretsiz · Hesap gerektirmez · İnternetsiz çalışır", "Free · No account · Works offline", "Gratuit · Sans compte · Fonctionne hors ligne", "Gratis · Sin cuenta · Funciona sin conexión", "Gratis · Nessun account · Funziona offline", "Kostenlos · Kein Konto · Funktioniert offline", "Бесплатно · Без аккаунта · Работает офлайн", "免费 · 无需账号 · 可离线使用", "Grátis · Sem conta · Funciona offline"], "target": ["hedef", "target", "objectif", "objetivo", "obiettivo", "Ziel", "цель", "目标", "meta"], "hit": ["Hedef tutuyor", "Target reached", "Objectif atteint", "Objetivo alcanzado", "Obiettivo raggiunto", "Ziel erreicht", "Цель достигнута", "已达到目标", "Meta atingida"], "howTitle": ["Üç adımda doğru ayar", "The right settings in three steps", "Les bons réglages en trois étapes", "Los ajustes correctos en tres pasos", "Le impostazioni giuste in tre passi", "Die richtigen Einstellungen in drei Schritten", "Правильные настройки за три шага", "三步找到合适设置", "As configurações certas em três passos"], "s1t": ["Oyununu seç", "Pick your game", "Choisissez le jeu", "Elige tu juego", "Scegli il gioco", "Spiel wählen", "Выберите игру", "选择游戏", "Escolha o jogo"], "s1": ["Listeden seç ya da ara: \"rdr2\", \"cs2\" gibi kısaltmalar da çalışır.", "Choose from the list or search: short names like \"rdr2\" and \"cs2\" work too.", "Choisissez dans la liste ou cherchez : les abréviations comme « rdr2 » ou « cs2 » marchent aussi.", "Elige de la lista o busca: también funcionan abreviaturas como \"rdr2\" o \"cs2\".", "Scegli dalla lista o cerca: funzionano anche sigle come \"rdr2\" e \"cs2\".", "Aus der Liste wählen oder suchen – auch Kürzel wie „rdr2“ oder „cs2“ funktionieren.", "Выберите из списка или найдите: работают и сокращения вроде «rdr2» и «cs2».", "从列表中选择或搜索，“rdr2”“cs2”这样的简称也可以。", "Escolha na lista ou pesquise: abreviações como \"rdr2\" e \"cs2\" também funcionam."], "s2t": ["Hedefini yaz", "Set your target", "Fixez votre objectif", "Fija tu objetivo", "Imposta l'obiettivo", "Ziel festlegen", "Задайте цель", "设定目标", "Defina sua meta"], "s2": ["30 ile 720 FPS arası bir hedef belirle ya da monitörünün Hz değerine dokun.", "Set a target from 30 to 720 FPS, or tap your monitor's refresh rate.", "Visez entre 30 et 720 FPS, ou touchez la fréquence de votre écran.", "Elige un objetivo entre 30 y 720 FPS o toca la frecuencia de tu monitor.", "Scegli un obiettivo tra 30 e 720 FPS o tocca la frequenza del tuo monitor.", "Wähle ein Ziel zwischen 30 und 720 FPS oder tippe auf die Hz deines Monitors.", "Укажите от 30 до 720 FPS или нажмите частоту своего монитора.", "在 30 到 720 FPS 之间设定目标，或直接点选显示器刷新率。", "Escolha uma meta entre 30 e 720 FPS ou toque na taxa do seu monitor."], "s3t": ["Ayarları uygula", "Apply the settings", "Appliquez les réglages", "Aplica los ajustes", "Applica le impostazioni", "Einstellungen übernehmen", "Примените настройки", "应用设置", "Aplique os ajustes"], "s3": ["Her ayarın hangi kademede olacağı, oyunun menüsündeki sırayla listelenir.", "Every setting's level is listed in the same order as the game's menu.", "Le niveau de chaque réglage est listé dans l'ordre du menu du jeu.", "El nivel de cada ajuste aparece en el mismo orden que el menú del juego.", "Il livello di ogni impostazione è elencato nell'ordine del menu del gioco.", "Die Stufe jeder Einstellung steht in derselben Reihenfolge wie im Spielmenü.", "Уровень каждой настройки указан в том же порядке, что и в меню игры.", "每项设置的档位都按游戏菜单的顺序列出。", "O nível de cada ajuste aparece na mesma ordem do menu do jogo."], "modesTitle": ["Oyununa göre iki farklı akıl", "Two different minds, one for each kind of game", "Deux approches selon le type de jeu", "Dos enfoques según el tipo de juego", "Due approcci in base al tipo di gioco", "Zwei Denkweisen je nach Spieltyp", "Два подхода для разных типов игр", "两种思路，适配不同类型的游戏", "Duas abordagens para cada tipo de jogo"], "modesLead": ["Hikâyeli oyunda manzarayı, rekabetçi oyunda rakibi görmek istersin. FPSmith oyunun türünü bilir ve ona göre düşünür.", "In a story game you want the view; in a competitive game you want the enemy. FPSmith knows the genre and thinks accordingly.", "Dans un jeu narratif, on veut le paysage ; en compétition, on veut voir l'adversaire. FPSmith connaît le genre et s'adapte.", "En un juego narrativo quieres el paisaje; en uno competitivo, ver al rival. FPSmith conoce el género y piensa en consecuencia.", "In un gioco narrativo vuoi il panorama, in uno competitivo vuoi vedere l'avversario. FPSmith conosce il genere e ragiona di conseguenza.", "In Story-Spielen willst du die Aussicht, in kompetitiven Spielen den Gegner sehen. FPSmith kennt das Genre und denkt entsprechend.", "В сюжетной игре важна картинка, в соревновательной — видеть противника. FPSmith знает жанр и учитывает это.", "剧情游戏要看风景，竞技游戏要看清对手。FPSmith 了解游戏类型，并据此给出设置。", "Em jogos de história você quer a paisagem; em competitivos, ver o inimigo. O FPSmith conhece o gênero e pensa de acordo."], "cineK": ["Hikâyeli oyunlar", "Story games", "Jeux narratifs", "Juegos narrativos", "Giochi narrativi", "Story-Spiele", "Сюжетные игры", "剧情游戏", "Jogos de história"], "cineT": ["Sinematik deneyim", "Cinematic experience", "Expérience cinématique", "Experiencia cinematográfica", "Esperienza cinematografica", "Cineastisches Erlebnis", "Кинематографичный режим", "电影级体验", "Experiência cinematográfica"], "cine": ["Hedef FPS'i tutturan en güzel görüntü. Kaldırıyorsa ışın izlemeyi açar, gerekirse kare üretimini devreye sokar, görüntüden en az ödün verilecek ayarı seçer.", "The best-looking image that still hits your target. Turns on ray tracing when your system can take it, adds frame generation if needed and trims the setting you will miss the least.", "La plus belle image qui tient votre objectif. Active le ray tracing si votre PC suit, ajoute la génération d'images si besoin et réduit d'abord ce qui se remarque le moins.", "La imagen más bonita que mantiene tu objetivo. Activa el trazado de rayos si tu equipo puede, añade generación de fotogramas si hace falta y recorta lo que menos se nota.", "L'immagine più bella che rispetta l'obiettivo. Attiva il ray tracing se il PC regge, aggiunge la generazione di frame se serve e riduce prima ciò che si nota meno.", "Das schönste Bild, das dein Ziel hält. Schaltet Raytracing ein, wenn dein System es schafft, nutzt bei Bedarf Frame Generation und senkt zuerst, was am wenigsten auffällt.", "Самая красивая картинка при целевом FPS. Включает трассировку лучей, если система тянет, при необходимости — генерацию кадров, и снижает то, что меньше всего заметно.", "在达到目标帧率的前提下画面最好看。配置够强就开启光线追踪，必要时启用帧生成，并优先降低最不明显的设置。", "A imagem mais bonita que ainda atinge a meta. Liga o ray tracing se o PC aguentar, usa geração de quadros se precisar e reduz primeiro o que menos se nota."], "compK": ["Rekabetçi oyunlar", "Competitive games", "Jeux compétitifs", "Juegos competitivos", "Giochi competitivi", "Kompetitive Spiele", "Соревновательные игры", "竞技游戏", "Jogos competitivos"], "compT": ["Rekabetçi ayarlar", "Competitive settings", "Réglages compétitifs", "Ajustes competitivos", "Impostazioni competitive", "Kompetitive Einstellungen", "Соревновательные настройки", "竞技设置", "Ajustes competitivos"], "comp": ["Yüksek FPS ve net görüş. Rakibi saklayan gölge, sis ve efektleri kapatır, uzak mesafe detayını korur, gecikme ekleyen kare üretimini kullanmaz.", "High FPS and a clear view. Turns off shadows, fog and effects that hide enemies, keeps long-range detail and skips latency-adding frame generation.", "FPS élevés et vision nette. Coupe ombres, brouillard et effets qui cachent l'adversaire, garde les détails lointains et évite la génération d'images qui ajoute de la latence.", "FPS altos y visión clara. Quita sombras, niebla y efectos que esconden al rival, mantiene el detalle a distancia y evita la generación de fotogramas que añade latencia.", "FPS alti e visuale pulita. Spegne ombre, nebbia ed effetti che nascondono l'avversario, mantiene il dettaglio a distanza ed evita la generazione di frame che aggiunge latenza.", "Hohe FPS und klare Sicht. Schaltet Schatten, Nebel und Effekte ab, die Gegner verdecken, behält Fernsicht-Details und verzichtet auf latenzerhöhende Frame Generation.", "Высокий FPS и чистая картинка. Отключает тени, туман и эффекты, скрывающие врага, сохраняет детали вдали и не использует генерацию кадров, добавляющую задержку.", "高帧率、视野清晰。关闭会遮挡对手的阴影、雾效和特效，保留远处细节，不使用会增加延迟的帧生成。", "FPS alto e visão limpa. Desliga sombras, névoa e efeitos que escondem o inimigo, mantém o detalhe à distância e evita a geração de quadros que adiciona latência."], "gamesTitle": ["100 oyun, gerçek menüleriyle", "100 games, with their real menus", "100 jeux, avec leurs vrais menus", "100 juegos, con sus menús reales", "100 giochi, con i loro veri menu", "100 Spiele mit ihren echten Menüs", "100 игр с настоящими меню", "100 款游戏，还原真实菜单", "100 jogos, com seus menus reais"], "gamesLead": ["★ işaretli oyunlarda ayarlar, oyunun kendi menüsündeki adlar ve sırayla gösterilir.", "Games marked ★ show settings with the same names and order as the game's own menu.", "Pour les jeux marqués ★, les réglages portent les noms et l'ordre du menu du jeu.", "En los juegos con ★, los ajustes aparecen con los nombres y el orden del menú del juego.", "Nei giochi con ★ le impostazioni hanno i nomi e l'ordine del menu del gioco.", "Bei Spielen mit ★ haben die Einstellungen dieselben Namen und dieselbe Reihenfolge wie im Spielmenü.", "В играх со ★ настройки названы и упорядочены как в меню игры.", "带 ★ 的游戏，设置名称和顺序与游戏菜单完全一致。", "Nos jogos com ★, os ajustes têm os mesmos nomes e ordem do menu do jogo."], "search": ["Oyun ara", "Search games", "Rechercher un jeu", "Buscar juegos", "Cerca giochi", "Spiele suchen", "Поиск игр", "搜索游戏", "Buscar jogos"], "searchPh": ["ör. Fortnite, rdr2, cs2", "e.g. Fortnite, rdr2, cs2", "ex. Fortnite, rdr2, cs2", "p. ej. Fortnite, rdr2, cs2", "es. Fortnite, rdr2, cs2", "z. B. Fortnite, rdr2, cs2", "напр. Fortnite, rdr2, cs2", "例如 Fortnite、rdr2、cs2", "ex. Fortnite, rdr2, cs2"], "allGames": ["Tüm oyunları ayar aracında gör", "See every game in the settings tool", "Voir tous les jeux dans l'outil", "Ver todos los juegos en la herramienta", "Vedi tutti i giochi nello strumento", "Alle Spiele im Tool ansehen", "Все игры в подборе настроек", "在设置工具中查看全部游戏", "Ver todos os jogos na ferramenta"], "tagMenu": ["★ Menü", "★ Menu", "★ Menu", "★ Menú", "★ Menu", "★ Menü", "★ Меню", "★ 菜单", "★ Menu"], "tagNew": ["Yeni", "New", "Nouveau", "Nuevo", "Nuovo", "Neu", "Новинка", "新", "Novo"], "hwTitle": ["Senin donanımın, senin rengin", "Your hardware, your colors", "Votre matériel, vos couleurs", "Tu hardware, tus colores", "Il tuo hardware, i tuoi colori", "Deine Hardware, deine Farben", "Ваше железо — ваши цвета", "你的硬件，你的配色", "Seu hardware, suas cores"], "hwLead": ["300'den fazla ekran kartı ve işlemci, 11 el konsolu. Arayüz, seçtiğin donanımın markasına bürünür.", "More than 300 graphics cards and processors, plus 11 handhelds. The interface takes on the colors of your hardware brand.", "Plus de 300 cartes graphiques et processeurs, et 11 consoles portables. L'interface prend les couleurs de votre marque.", "Más de 300 tarjetas gráficas y procesadores, y 11 consolas portátiles. La interfaz adopta los colores de tu marca.", "Oltre 300 schede video e processori, più 11 console portatili. L'interfaccia prende i colori del tuo marchio.", "Über 300 Grafikkarten und Prozessoren plus 11 Handhelds. Die Oberfläche übernimmt die Farben deiner Marke.", "Более 300 видеокарт и процессоров и 11 портативных консолей. Интерфейс окрашивается в цвета вашего бренда.", "超过 300 款显卡和处理器，外加 11 款掌机。界面会换上你的硬件品牌配色。", "Mais de 300 placas de vídeo e processadores, além de 11 portáteis. A interface assume as cores da sua marca."], "incl": ["dahil", "included", "inclus", "incluidas", "incluse", "inklusive", "включая", "包含", "incluídas"], "arcNote": ["Arc ve dahili grafik", "Arc and integrated graphics", "Arc et graphique intégré", "Arc y gráficos integrados", "Arc e grafica integrata", "Arc und integrierte Grafik", "Arc и встроенная графика", "Arc 与核显", "Arc e gráficos integrados"], "f1": ["oyun, 2026 çıkışları dahil", "games, including 2026 releases", "jeux, sorties 2026 incluses", "juegos, incluidos los de 2026", "giochi, incluse le uscite 2026", "Spiele, inklusive 2026er-Titel", "игр, включая релизы 2026 года", "款游戏，含 2026 年新作", "jogos, incluindo lançamentos de 2026"], "f2": ["oyunda oyunun gerçek ayar menüsü", "with the game's real settings menu", "avec le vrai menu de réglages du jeu", "con el menú real de ajustes del juego", "con il vero menu impostazioni del gioco", "mit dem echten Einstellungsmenü des Spiels", "с настоящим меню настроек игры", "款还原游戏真实设置菜单", "com o menu real de ajustes do jogo"], "f3": ["ekran kartı, işlemci ve el konsolu", "graphics cards, processors and handhelds", "cartes graphiques, processeurs et consoles portables", "tarjetas gráficas, procesadores y portátiles", "schede video, processori e console portatili", "Grafikkarten, Prozessoren und Handhelds", "видеокарт, процессоров и консолей", "款显卡、处理器和掌机", "placas de vídeo, processadores e portáteis"], "f4": ["dil", "languages", "langues", "idiomas", "lingue", "Sprachen", "языков", "种语言", "idiomas"], "faqTitle": ["Sık sorulanlar", "FAQ", "Questions fréquentes", "Preguntas frecuentes", "Domande frequenti", "Häufige Fragen", "Частые вопросы", "常见问题", "Perguntas frequentes"], "q1": ["FPS değerleri ne kadar doğru?", "How accurate are the FPS numbers?", "Les FPS sont-ils précis ?", "¿Qué tan precisos son los FPS?", "Quanto sono precisi gli FPS?", "Wie genau sind die FPS-Werte?", "Насколько точны значения FPS?", "帧率数值有多准确？", "Os FPS são precisos?"], "a1": ["Değerler, bağımsız donanım testlerine dayanan bir modelle hesaplanan tahminlerdir. Gerçek sonuç sahneye, sürücüye ve oyun güncellemelerine göre değişebilir.", "They are estimates from a model based on independent hardware testing. Real results vary by scene, driver and game updates.", "Ce sont des estimations issues d'un modèle basé sur des tests matériels indépendants. Les résultats réels varient selon la scène, le pilote et les mises à jour.", "Son estimaciones de un modelo basado en pruebas de hardware independientes. El resultado real varía según la escena, el controlador y las actualizaciones.", "Sono stime di un modello basato su test hardware indipendenti. I risultati reali variano in base a scena, driver e aggiornamenti.", "Es sind Schätzungen eines Modells auf Basis unabhängiger Hardwaretests. Echte Werte schwanken je nach Szene, Treiber und Spielupdates.", "Это оценки модели, основанной на независимых тестах железа. Реальный результат зависит от сцены, драйвера и обновлений игры.", "这些数值来自基于独立硬件测试的模型估算。实际结果会因场景、驱动和游戏更新而不同。", "São estimativas de um modelo baseado em testes independentes de hardware. O resultado real varia conforme a cena, o driver e as atualizações."], "q2": ["Telefon oyunları için mi?", "Is it for mobile games?", "Est-ce pour les jeux mobiles ?", "¿Es para juegos de móvil?", "È per i giochi su smartphone?", "Ist es für Handyspiele?", "Это для мобильных игр?", "适用于手机游戏吗？", "É para jogos de celular?"], "a2": ["Hayır. FPSmith bilgisayar, dizüstü ve el konsolu oyunları içindir; telefonundan ya da bu siteden ayarları bulup bilgisayarına uygularsın.", "No. FPSmith is for PC, laptop and handheld gaming: find the settings on your phone or on this site and apply them on your PC.", "Non. FPSmith est pour le jeu sur PC, portable et console portable : trouvez les réglages sur votre téléphone ou ici, puis appliquez-les sur votre PC.", "No. FPSmith es para jugar en PC, portátil y consola portátil: encuentra los ajustes en el móvil o en esta web y aplícalos en tu PC.", "No. FPSmith è per PC, portatili e console portatili: trova le impostazioni sul telefono o su questo sito e applicale al PC.", "Nein. FPSmith ist für PC, Laptop und Handheld: Finde die Einstellungen am Handy oder hier und übernimm sie am PC.", "Нет. FPSmith — для ПК, ноутбуков и портативных консолей: подберите настройки на телефоне или здесь и примените их на компьютере.", "不适用。FPSmith 面向台式机、笔记本和掌机游戏：在手机或本站找到设置，再应用到电脑上。", "Não. O FPSmith é para PC, notebook e portáteis: encontre os ajustes no celular ou neste site e aplique no PC."], "q3": ["Ücretli mi, hesap gerekiyor mu?", "Is it free? Do I need an account?", "Est-ce gratuit ? Faut-il un compte ?", "¿Es gratis? ¿Necesito una cuenta?", "È gratuito? Serve un account?", "Ist es kostenlos? Brauche ich ein Konto?", "Это бесплатно? Нужен аккаунт?", "免费吗？需要账号吗？", "É grátis? Preciso de conta?"], "a3": ["Ücretsiz ve hesap gerektirmez. Seçtiğin sistem yalnızca kendi cihazında saklanır.", "It is free and needs no account. Your system choices stay on your own device.", "Gratuit et sans compte. Vos choix restent sur votre appareil.", "Es gratis y no necesita cuenta. Tu sistema se guarda solo en tu dispositivo.", "È gratuito e senza account. Le tue scelte restano sul tuo dispositivo.", "Kostenlos und ohne Konto. Deine Auswahl bleibt nur auf deinem Gerät.", "Бесплатно и без аккаунта. Ваш выбор хранится только на вашем устройстве.", "免费且无需账号。你的配置只保存在自己的设备上。", "É grátis e não precisa de conta. Suas escolhas ficam só no seu aparelho."], "q4": ["Oyunum listede yok, ne yapmalıyım?", "My game is missing. What can I do?", "Mon jeu n'est pas dans la liste ?", "Mi juego no está en la lista, ¿qué hago?", "Il mio gioco non c'è, cosa faccio?", "Mein Spiel fehlt – was tun?", "Моей игры нет в списке. Что делать?", "我的游戏不在列表里怎么办？", "Meu jogo não está na lista. E agora?"], "a4": ["Yeni oyunlar düzenli olarak ekleniyor. Bize e-postayla yazabilirsin.", "New games are added regularly. Send us an email.", "De nouveaux jeux arrivent régulièrement. Écrivez-nous par e-mail.", "Añadimos juegos nuevos con regularidad. Escríbenos por correo.", "Aggiungiamo nuovi giochi regolarmente. Scrivici via email.", "Neue Spiele kommen regelmäßig dazu. Schreib uns eine E-Mail.", "Новые игры добавляются регулярно. Напишите нам на почту.", "我们会定期添加新游戏，欢迎发邮件告诉我们。", "Novos jogos são adicionados com frequência. Mande um e-mail."], "dlTitle": ["Bir sonraki oyununu doğru ayarlarla aç.", "Launch your next game with the right settings.", "Lancez votre prochain jeu avec les bons réglages.", "Abre tu próximo juego con los ajustes correctos.", "Avvia il prossimo gioco con le impostazioni giuste.", "Starte dein nächstes Spiel mit den richtigen Einstellungen.", "Запускайте следующую игру с правильными настройками.", "用合适的设置开启下一款游戏。", "Abra seu próximo jogo com os ajustes certos."], "dlLead": ["Android için ücretsiz. iPhone ya da bilgisayardan ayarlarını doğrudan bu sitede hesaplayabilirsin.", "Free on Android. On iPhone or a computer, calculate your settings right here on this site.", "Gratuit sur Android. Sur iPhone ou ordinateur, calculez vos réglages directement ici.", "Gratis en Android. Desde iPhone u ordenador, calcula tus ajustes aquí mismo.", "Gratis su Android. Da iPhone o computer, calcola le impostazioni direttamente qui.", "Kostenlos für Android. Auf iPhone oder Computer berechnest du deine Einstellungen direkt hier.", "Бесплатно на Android. С iPhone или компьютера подбирайте настройки прямо на этом сайте.", "安卓版免费。在 iPhone 或电脑上，可以直接在本站计算设置。", "Grátis no Android. No iPhone ou computador, calcule seus ajustes aqui mesmo."], "privacy": ["Gizlilik politikası", "Privacy policy", "Confidentialité", "Privacidad", "Privacy", "Datenschutz", "Конфиденциальность", "隐私政策", "Privacidade"], "contact": ["İletişim", "Contact", "Contact", "Contacto", "Contatti", "Kontakt", "Контакты", "联系我们", "Contato"], "disclaimer": ["FPS değerleri bağımsız donanım testlerine dayanan tahminlerdir.", "FPS values are estimates based on independent hardware testing.", "Les FPS sont des estimations basées sur des tests matériels indépendants.", "Los FPS son estimaciones basadas en pruebas de hardware independientes.", "Gli FPS sono stime basate su test hardware indipendenti.", "FPS-Werte sind Schätzungen auf Basis unabhängiger Hardwaretests.", "Значения FPS — оценки на основе независимых тестов железа.", "帧率数值基于独立硬件测试估算。", "Os FPS são estimativas baseadas em testes independentes de hardware."], "metaDesc": ["Ekran kartına ve işlemcine göre 100 bilgisayar oyununda hedef FPS'i tutturan en güzel grafik ayarlarını bul.", "Find the best-looking graphics settings that hit your target FPS in 100 PC games, for your graphics card and processor.", "Trouvez les plus beaux réglages graphiques qui tiennent vos FPS cibles dans 100 jeux PC.", "Encuentra los ajustes gráficos más bonitos que mantienen tus FPS objetivo en 100 juegos de PC.", "Trova le impostazioni grafiche più belle che rispettano i tuoi FPS in 100 giochi PC.", "Finde die schönsten Grafikeinstellungen für deine Ziel-FPS in 100 PC-Spielen.", "Подберите самые красивые настройки графики для целевого FPS в 100 играх для ПК.", "为 100 款 PC 游戏找到达到目标帧率的最佳画质设置。", "Encontre os ajustes gráficos mais bonitos que atingem seus FPS em 100 jogos de PC."], "soon": ["Çok yakında", "Coming soon", "Bientôt", "Muy pronto", "In arrivo", "Bald verfügbar", "Скоро", "即将上线", "Em breve"], "toolTitle": ["Ayar aracı", "Settings tool", "Outil de réglages", "Herramienta de ajustes", "Strumento impostazioni", "Einstellungs-Tool", "Подбор настроек", "设置工具", "Ferramenta de ajustes"]}, LANGS = ["tr", "en", "fr", "es", "it", "de", "ru", "zh", "pt"], HERO = {"tr": {"rows": [["Doku Kalitesi", "Yüksek", "Orta"], ["Hacimsel Sis Çözünürlüğü", "Ultra", "Orta"], ["Hacimsel Bulut Kalitesi", "Ultra", "Yüksek"], ["Ekran Uzayı Yansımaları", "Ultra", "Yüksek"], ["Kalabalık Yoğunluğu", "", "Yüksek"]], "fg": "Kare üretimi", "off": "kapalı"}, "en": {"rows": [["Texture Quality", "High", "Medium"], ["Volumetric Fog Resolution", "Ultra", "Medium"], ["Volumetric Cloud Quality", "Ultra", "High"], ["Screen Space Reflections Quality", "Ultra", "High"], ["Crowd Density", "", "High"]], "fg": "Frame generation", "off": "off"}, "fr": {"rows": [["Qualité des textures", "Élevé", "Moyen"], ["Résolution du brouillard volumétrique", "Ultra", "Moyen"], ["Qualité des nuages volumétriques", "Ultra", "Élevé"], ["Qualité des réflexions SSR", "Ultra", "Élevé"], ["Densité de foule", "", "Élevé"]], "fg": "Génération d'images", "off": "désactivé"}, "es": {"rows": [["Calidad de texturas", "Alto", "Medio"], ["Resolución de niebla volumétrica", "Ultra", "Medio"], ["Calidad de nubes volumétricas", "Ultra", "Alto"], ["Calidad de reflejos en pantalla", "Ultra", "Alto"], ["Densidad de multitudes", "", "Alto"]], "fg": "Generación de fotogramas", "off": "desactivado"}, "it": {"rows": [["Qualità texture", "Alta", "Media"], ["Risoluzione nebbia volumetrica", "Ultra", "Media"], ["Qualità nuvole volumetriche", "Ultra", "Alta"], ["Qualità riflessi screen space", "Ultra", "Alta"], ["Densità della folla", "", "Alta"]], "fg": "Generazione frame", "off": "disattivato"}, "de": {"rows": [["Texturqualität", "Hoch", "Mittel"], ["Auflösung volumetrischer Nebel", "Ultra", "Mittel"], ["Qualität volumetrischer Wolken", "Ultra", "Hoch"], ["Bildschirmraum-Reflexionen", "Ultra", "Hoch"], ["Menschendichte", "", "Hoch"]], "fg": "Frame-Generierung", "off": "aus"}, "ru": {"rows": [["Качество текстур", "Высокое", "Среднее"], ["Разрешение объёмного тумана", "Ультра", "Среднее"], ["Качество объёмных облаков", "Ультра", "Высокое"], ["Отражения в экранном пространстве", "Ультра", "Высокое"], ["Плотность толпы", "", "Высокое"]], "fg": "Генерация кадров", "off": "выкл."}, "zh": {"rows": [["纹理质量", "高", "中"], ["体积雾分辨率", "极高", "中"], ["体积云质量", "极高", "高"], ["屏幕空间反射质量", "极高", "高"], ["人群密度", "", "高"]], "fg": "帧生成", "off": "关闭"}, "pt": {"rows": [["Qualidade de textura", "Alto", "Médio"], ["Resolução de neblina volumétrica", "Ultra", "Médio"], ["Qualidade de nuvens volumétricas", "Ultra", "Alto"], ["Qualidade de reflexos em tela", "Ultra", "Alto"], ["Densidade de multidão", "", "Alto"]], "fg": "Geração de quadros", "off": "desligado"}};
+var KEY = 'fpsmith-web-prefs';
+function getPrefs(){ try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+function setLang(l){
+  var i = LANGS.indexOf(l); if (i < 0) { l = 'en'; i = 1; }
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i]').forEach(function (el) { var r = S[el.getAttribute('data-i')]; if (r) el.textContent = r[i]; });
+  document.querySelectorAll('[data-ph]').forEach(function (el) { el.placeholder = S[el.getAttribute('data-ph')][i]; });
+  document.title = 'FPSmith: ' + S.ctaTry[i];
+  var m = document.querySelector('meta[name=description]'); if (m) m.content = S.metaDesc[i];
+  var h = HERO[l], off = h.off.charAt(0).toUpperCase() + h.off.slice(1), rows = '';
+  h.rows.forEach(function (r) { rows += '<div class="row"><span class="n">' + r[0] + '</span><span class="v">' + (r[1] ? '<s>' + r[1] + '</s><b class="dn">' : '<b>') + r[2] + '</b></span></div>'; });
+  rows += '<div class="row"><span class="n">' + h.fg + '</span><span class="v"><s>' + off + '</s><b class="up">2x</b></span></div>';
+  document.getElementById('heroRows').innerHTML = rows;
+  document.getElementById('hitSub').textContent = S.target[i] + ' 60 FPS · ' + h.fg + ' 2x';
+  document.getElementById('lang').value = l;
+  var p = getPrefs(); p.lang = l; try { localStorage.setItem(KEY, JSON.stringify(p)); } catch (e) {}
+}
+document.getElementById('lang').addEventListener('change', function (e) { setLang(e.target.value); });
+document.getElementById('gform').addEventListener('submit', function (e) {
+  e.preventDefault(); var q = document.getElementById('gq').value.trim();
+  location.href = 'arac.html' + (q ? '#q=' + encodeURIComponent(q) : '');
+});
+setLang(getPrefs().lang || (navigator.language || 'tr').slice(0, 2).toLowerCase());
+</script>
+</body>
+</html>
