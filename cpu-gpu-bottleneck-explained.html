@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CPU or GPU bottleneck? How to tell what is holding you back · FPSmith</title>
+<meta name="description" content="The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.">
+<link rel="canonical" href="https://fpsmithapp.com/cpu-gpu-bottleneck-explained.html">
+<link rel="alternate" hreflang="en" href="https://fpsmithapp.com/cpu-gpu-bottleneck-explained.html">
+<link rel="alternate" hreflang="tr" href="https://fpsmithapp.com/darbogaz-nedir.html">
+<link rel="alternate" hreflang="x-default" href="https://fpsmithapp.com/cpu-gpu-bottleneck-explained.html">
+<meta name="theme-color" content="#0E1020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CPU or GPU bottleneck? How to tell what is holding you back · FPSmith">
+<meta property="og:description" content="The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.">
+<meta property="og:url" content="https://fpsmithapp.com/cpu-gpu-bottleneck-explained.html">
+<meta property="og:image" content="https://fpsmithapp.com/icon-512.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "CPU or GPU bottleneck? How to tell what is holding you back", "description": "The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.", "inLanguage": "en", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "author": {"@type": "Organization", "name": "FPSmith", "url": "https://fpsmithapp.com/about.html"}, "publisher": {"@type": "Organization", "name": "FPSmith", "logo": {"@type": "ImageObject", "url": "https://fpsmithapp.com/icon-512.png"}}, "mainEntityOfPage": "https://fpsmithapp.com/cpu-gpu-bottleneck-explained.html"}</script>
+<meta name="google-adsense-account" content="ca-pub-1157924658396465">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1157924658396465" crossorigin="anonymous"></script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<header class="sh"><nav class="wrap">
+<a class="logo" href="./"><svg width="36" height="36" viewBox="0 0 42 42" aria-hidden="true"><path d="M10.4 33.6 A15 15 0 1 1 31.6 33.6" fill="none" stroke="#2C3250" stroke-width="4" stroke-linecap="round"/><path d="M10.4 33.6 A15 15 0 1 1 32.5 13.4" fill="none" stroke="#FF8A1F" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-40 21 23)"><rect x="21" y="21.7" width="11" height="2.6" rx="1.2" fill="#C9D0E2"/><rect x="31.5" y="17.5" width="5" height="11" rx="1.4" fill="#E9EDF7"/></g><circle cx="21" cy="23" r="4.2" fill="#D7DDEB"/><circle cx="21" cy="23" r="1.5" fill="#0E1020"/></svg><b><span>FPS</span>mith</b></a>
+<div class="links"><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a class="tool" href="arac.html">Settings tool</a><a class="lang" href="darbogaz-nedir.html" hreflang="tr" lang="tr">Türkçe</a></div>
+</nav></header>
+<main class="wrap">
+<p class="crumb"><a href="./">Home</a> › <a href="articles.html">Articles</a> › CPU or GPU bottleneck? How to tell what is holding you back</p>
+<article class="prose art">
+<h1>CPU or GPU bottleneck? How to tell what is holding you back</h1>
+<p class="upd">By the FPSmith team · Published: October 20, 2026</p>
+<p class="lead">The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.</p>
+
+<p>Every frame involves two jobs: the processor prepares the game logic, physics and the commands for the graphics card, and the graphics card draws the image. Whichever is slower decides your frame rate. That is a bottleneck, and every system has one; what matters is which part it is, and in which game.</p>
+
+<h2>Same graphics card, three processors</h2>
+<p>In the FPSmith settings tool we paired an RX 9070 XT at 1080p with three processors: a Ryzen 5 3600 from 2019, a Ryzen 5 5600 from 2022 and the Ryzen 7 9800X3D, one of the fastest gaming processors.</p>
+<table class="st"><thead><tr><th>Game (1080p)</th><th>Ryzen 5 3600</th><th>Ryzen 5 5600</th><th>Ryzen 7 9800X3D</th></tr></thead><tbody>
+<tr><th scope="row">Counter-Strike 2</th><td>266 FPS</td><td>334 FPS</td><td>525 FPS</td></tr>
+<tr><th scope="row">Valorant</th><td>365 FPS</td><td>457 FPS</td><td>800 FPS</td></tr>
+<tr><th scope="row">Fortnite</th><td>152 FPS</td><td>190 FPS</td><td>305 FPS</td></tr>
+<tr><th scope="row">Baldur's Gate 3</th><td>81 FPS</td><td>102 FPS</td><td>133 FPS</td></tr>
+<tr><th scope="row">Cyberpunk 2077</th><td>97 FPS</td><td>121 FPS</td><td>124 FPS</td></tr>
+<tr><th scope="row">Microsoft Flight Simulator 2024</th><td>31 FPS</td><td>40 FPS</td><td>63 FPS</td></tr>
+</tbody></table>
+<p>Two lessons. First, in competitive games and simulators the processor is everything: with the same graphics card, Counter-Strike 2 nearly doubles. Second, in graphics-heavy games like Cyberpunk 2077 the gains stop after a certain point; the Ryzen 5 5600 and the 9800X3D are only 3 FPS apart because the graphics card is now the limit.</p>
+
+<h2>How to spot a bottleneck yourself</h2>
+<ul>
+<li><b>Lower the resolution.</b> If the frame rate barely moves, the processor is the limit. If it rises clearly, the graphics card is.</li>
+<li><b>Watch graphics card usage.</b> With an in-game overlay (such as the performance overlay in the NVIDIA or AMD app), usage that stays below about 95% usually means the processor cannot keep up.</li>
+<li><b>Watch busy scenes.</b> City centres, large fights and many characters load the processor. If frame rates only drop in those moments, you are processor-bound.</li>
+</ul>
+
+<h2>Is a bottleneck bad?</h2>
+<p>No. A graphics card bottleneck is actually what you want: you are using all of the card you paid for. The problem is when the processor stops you short of your goal, for example a 240 Hz monitor with a processor that cannot go past 150 FPS.</p>
+
+<h2>What settings can do</h2>
+<p><b>Graphics card limited:</b> Global illumination, volumetrics, shadows and upscaling all help. Anything tied to resolution gains frames.</p>
+<p><b>Processor limited:</b> Most graphics settings make little difference. Crowd density, object and view distance, physics and in some games shadow distance help. Upscaling barely helps at all.</p>
+
+<h2>Why X3D processors are so good for games</h2>
+<p>AMD's X3D processors have a very large cache. Games keep touching the same data, so a large cache means the processor waits on main memory less often. That is the reason for the big gaps in the table.</p>
+<p>FPSmith shows the bottleneck for every result. Check your own system in the <a href="arac.html">settings tool</a>.</p>
+
+<aside class="cta"><h2>Try it on your own PC</h2><p>Pick your game, graphics card, processor and FPS target and FPSmith shows the best-looking settings that hit it, in the game&#x27;s own menu order.</p><a class="btn" href="arac.html">Open the settings tool</a></aside>
+</article>
+<section class="rel"><h2>More articles</h2><ul class="acards"><li><a href="dlss-fsr-xess-explained.html"><b>DLSS, FSR and XeSS explained: which one should you use?</b><span>How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.</span></a></li><li><a href="which-settings-cost-the-most-fps.html"><b>Which graphics settings cost the most FPS? We calculated it for 43 games</b><span>Global illumination, volumetrics, shadows, textures: the settings that cost the most frames across 43 story games, and what they do to the image.</span></a></li><li><a href="is-8gb-vram-enough.html"><b>Is 8 GB of VRAM enough in 2026?</b><span>Comparing the RTX 4060 with the 12 GB RTX 3060: which games hit the 8 GB limit, and what you can do about it.</span></a></li><li><a href="frame-generation-explained.html"><b>Frame generation: when should you turn it on?</b><span>How DLSS and FSR frame generation and multi frame generation work, what they do to latency, and when they help or hurt.</span></a></li></ul></section>
+</main>
+<footer class="sf"><div class="wrap">
+<p class="fl"><a href="./">Home</a><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a href="arac.html">Settings tool</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a></p>
+<p>FPS values are estimates based on independent hardware testing. Game titles, graphics cards and processors mentioned are trademarks of their respective owners. FPSmith is not affiliated with them.</p>
+<p>© 2026 FPSmith</p>
+</div></footer>
+</body>
+</html>

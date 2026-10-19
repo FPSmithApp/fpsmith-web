@@ -54,6 +54,17 @@ thead th{font-family:var(--d);font-size:14px;letter-spacing:.4px;text-transform:
 .sf{border-top:1px solid var(--line);margin-top:30px;padding:24px 0 34px;color:var(--faint);font-size:15px}
 .sf .fl{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:16px}
 .sf .fl a{color:var(--dim)}
+.yr h3{font-size:20px;margin-top:26px}
+.gn{margin:30px 0 10px;padding:4px 22px 10px;background:var(--card);border:1px solid var(--line)}
+.gn h2{margin-top:18px}.gn p,.gn li{color:var(--ink2)}.gn li{margin:6px 0}
+.acards,.rel ul.acards{list-style:none;padding:0;margin:14px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.acards a,.rel .acards a{display:flex;flex-direction:column;gap:6px;height:100%;padding:16px 18px;background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--acc);text-decoration:none}
+.acards a b{font-family:var(--d);font-size:19px;line-height:1.25;color:var(--ink)}
+.acards a span{color:var(--dim);font-size:16px;font-weight:400}
+.acards a:hover{border-color:var(--acc)}
+.gl.feat a{border-left:3px solid var(--acc)}
+.art h2{margin-top:36px}.art li{margin:6px 0}
+.art .st tbody th{width:auto}
 @media (max-width:600px){
  body{font-size:17px}
  .wrap{padding-left:16px;padding-right:16px}

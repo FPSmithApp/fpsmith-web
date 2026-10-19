@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DLSS, FSR and XeSS explained: which one should you use? · FPSmith</title>
+<meta name="description" content="How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.">
+<link rel="canonical" href="https://fpsmithapp.com/dlss-fsr-xess-explained.html">
+<link rel="alternate" hreflang="en" href="https://fpsmithapp.com/dlss-fsr-xess-explained.html">
+<link rel="alternate" hreflang="tr" href="https://fpsmithapp.com/dlss-fsr-xess-nedir.html">
+<link rel="alternate" hreflang="x-default" href="https://fpsmithapp.com/dlss-fsr-xess-explained.html">
+<meta name="theme-color" content="#0E1020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DLSS, FSR and XeSS explained: which one should you use? · FPSmith">
+<meta property="og:description" content="How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.">
+<meta property="og:url" content="https://fpsmithapp.com/dlss-fsr-xess-explained.html">
+<meta property="og:image" content="https://fpsmithapp.com/icon-512.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DLSS, FSR and XeSS explained: which one should you use?", "description": "How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.", "inLanguage": "en", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "author": {"@type": "Organization", "name": "FPSmith", "url": "https://fpsmithapp.com/about.html"}, "publisher": {"@type": "Organization", "name": "FPSmith", "logo": {"@type": "ImageObject", "url": "https://fpsmithapp.com/icon-512.png"}}, "mainEntityOfPage": "https://fpsmithapp.com/dlss-fsr-xess-explained.html"}</script>
+<meta name="google-adsense-account" content="ca-pub-1157924658396465">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1157924658396465" crossorigin="anonymous"></script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<header class="sh"><nav class="wrap">
+<a class="logo" href="./"><svg width="36" height="36" viewBox="0 0 42 42" aria-hidden="true"><path d="M10.4 33.6 A15 15 0 1 1 31.6 33.6" fill="none" stroke="#2C3250" stroke-width="4" stroke-linecap="round"/><path d="M10.4 33.6 A15 15 0 1 1 32.5 13.4" fill="none" stroke="#FF8A1F" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-40 21 23)"><rect x="21" y="21.7" width="11" height="2.6" rx="1.2" fill="#C9D0E2"/><rect x="31.5" y="17.5" width="5" height="11" rx="1.4" fill="#E9EDF7"/></g><circle cx="21" cy="23" r="4.2" fill="#D7DDEB"/><circle cx="21" cy="23" r="1.5" fill="#0E1020"/></svg><b><span>FPS</span>mith</b></a>
+<div class="links"><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a class="tool" href="arac.html">Settings tool</a><a class="lang" href="dlss-fsr-xess-nedir.html" hreflang="tr" lang="tr">Türkçe</a></div>
+</nav></header>
+<main class="wrap">
+<p class="crumb"><a href="./">Home</a> › <a href="articles.html">Articles</a> › DLSS, FSR and XeSS explained: which one should you use?</p>
+<article class="prose art">
+<h1>DLSS, FSR and XeSS explained: which one should you use?</h1>
+<p class="upd">By the FPSmith team · Published: October 20, 2026</p>
+<p class="lead">How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.</p>
+
+<p>Almost every new game offers DLSS, FSR or XeSS in its settings menu. All three are built on the same idea: render the game below your screen resolution and rebuild the image intelligently. Used well, you lose very little image quality and gain a lot of frames; used badly, you end up with a soft, shimmering picture.</p>
+
+<h2>How upscaling works</h2>
+<p>Pick Quality mode on a 1440p monitor and the game actually renders at roughly 1707×960. The upscaler then uses information from previous frames and the direction objects are moving (motion vectors) to reconstruct a 2560×1440 image. Your graphics card shades fewer pixels, so the frame rate goes up.</p>
+<p>Every mode works the same way; only the internal resolution changes:</p>
+<table class="st"><thead><tr><th>Mode</th><th>Internal resolution (per axis)</th><th>FPSmith estimated gain: 1080p / 1440p / 4K</th></tr></thead><tbody>
+<tr><th scope="row">Quality</th><td>66.7%</td><td>+30% / +38% / +45%</td></tr>
+<tr><th scope="row">Balanced</th><td>58%</td><td>+45% / +55% / +65%</td></tr>
+<tr><th scope="row">Performance</th><td>50%</td><td>+60% / +75% / +90%</td></tr>
+<tr><th scope="row">Ultra Performance</th><td>33%</td><td>+75% / +95% / +125%</td></tr>
+</tbody></table>
+<p>These gains are the averages our settings tool uses when the graphics card is the limit. When the processor is the limit, upscaling helps much less, because the processor's work does not shrink with resolution.</p>
+
+<h2>Why it works better at higher resolutions</h2>
+<p>At 4K, even Performance mode renders internally at 1080p, so there is plenty of information to rebuild from. At 1080p, Performance mode starts from about 960×540 and fine detail such as fences, hair and distant foliage starts to break up. A simple rule:</p>
+<ul>
+<li><b>1080p:</b> Quality mode only, or no upscaling at all.</li>
+<li><b>1440p:</b> Quality or Balanced.</li>
+<li><b>4K:</b> Even Performance mode usually looks very good.</li>
+</ul>
+
+<h2>DLSS vs FSR vs XeSS</h2>
+<p><b>DLSS (NVIDIA)</b> runs only on RTX graphics cards and reconstructs the image with AI. It usually gives the best image quality. Newer versions (DLSS 4 and later) can be applied to older games through the NVIDIA app. It works on RTX 20 and RTX 30 cards too; only some extras, such as frame generation, are limited to newer cards.</p>
+<p><b>FSR (AMD)</b> comes in two families. FSR 3.1 and earlier run on any graphics card because they do not need AI hardware, which makes them valuable for older cards and handhelds. FSR 4 is AI-based and designed for the Radeon RX 9000 series, and its quality is now close to DLSS.</p>
+<p><b>XeSS (Intel)</b> uses Intel Arc's own AI units and falls back to a lighter path on other cards. It is the first choice on Arc and a good alternative to FSR 3.1 elsewhere.</p>
+
+<h2>Which one should you pick?</h2>
+<ul>
+<li><b>NVIDIA RTX card:</b> DLSS.</li>
+<li><b>AMD RX 9000 card:</b> FSR 4.</li>
+<li><b>Intel Arc card:</b> XeSS.</li>
+<li><b>Older AMD cards, GTX cards, handhelds:</b> XeSS or FSR 3.1 if the game supports them; try both and keep whichever looks cleaner to you.</li>
+</ul>
+
+<h2>DLAA and native anti-aliasing</h2>
+<p>You will also see options such as DLAA or "Native AA". These do not lower the resolution; they use AI only for anti-aliasing. They give the best image quality of all, but they do not add frames and cost a few percent instead. Use them when you have frame-rate headroom to spare.</p>
+
+<h2>How FPSmith uses upscaling</h2>
+<p>In our settings tool upscaling is off by default. We first try to hit your target by lowering the game's own settings with the least visual loss, and only suggest upscaling if the target is still out of reach. That way you see the solution that damages the image least first. In "Cinematic experience" mode the tool may switch on upscaling and frame generation by itself to get the best-looking result.</p>
+
+<aside class="cta"><h2>Try it on your own PC</h2><p>Pick your game, graphics card, processor and FPS target and FPSmith shows the best-looking settings that hit it, in the game&#x27;s own menu order.</p><a class="btn" href="arac.html">Open the settings tool</a></aside>
+</article>
+<section class="rel"><h2>More articles</h2><ul class="acards"><li><a href="which-settings-cost-the-most-fps.html"><b>Which graphics settings cost the most FPS? We calculated it for 43 games</b><span>Global illumination, volumetrics, shadows, textures: the settings that cost the most frames across 43 story games, and what they do to the image.</span></a></li><li><a href="is-8gb-vram-enough.html"><b>Is 8 GB of VRAM enough in 2026?</b><span>Comparing the RTX 4060 with the 12 GB RTX 3060: which games hit the 8 GB limit, and what you can do about it.</span></a></li><li><a href="cpu-gpu-bottleneck-explained.html"><b>CPU or GPU bottleneck? How to tell what is holding you back</b><span>The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.</span></a></li><li><a href="frame-generation-explained.html"><b>Frame generation: when should you turn it on?</b><span>How DLSS and FSR frame generation and multi frame generation work, what they do to latency, and when they help or hurt.</span></a></li></ul></section>
+</main>
+<footer class="sf"><div class="wrap">
+<p class="fl"><a href="./">Home</a><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a href="arac.html">Settings tool</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a></p>
+<p>FPS values are estimates based on independent hardware testing. Game titles, graphics cards and processors mentioned are trademarks of their respective owners. FPSmith is not affiliated with them.</p>
+<p>© 2026 FPSmith</p>
+</div></footer>
+</body>
+</html>

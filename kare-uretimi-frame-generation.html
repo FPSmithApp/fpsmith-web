@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kare üretimi (Frame Generation) ne zaman açılmalı? · FPSmith</title>
+<meta name="description" content="DLSS kare üretimi, FSR kare üretimi ve çoklu kare üretimi nasıl çalışır, gecikmeyi nasıl etkiler, hangi durumda faydalı, hangi durumda zararlı?">
+<link rel="canonical" href="https://fpsmithapp.com/kare-uretimi-frame-generation.html">
+<link rel="alternate" hreflang="tr" href="https://fpsmithapp.com/kare-uretimi-frame-generation.html">
+<link rel="alternate" hreflang="en" href="https://fpsmithapp.com/frame-generation-explained.html">
+<link rel="alternate" hreflang="x-default" href="https://fpsmithapp.com/frame-generation-explained.html">
+<meta name="theme-color" content="#0E1020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kare üretimi (Frame Generation) ne zaman açılmalı? · FPSmith">
+<meta property="og:description" content="DLSS kare üretimi, FSR kare üretimi ve çoklu kare üretimi nasıl çalışır, gecikmeyi nasıl etkiler, hangi durumda faydalı, hangi durumda zararlı?">
+<meta property="og:url" content="https://fpsmithapp.com/kare-uretimi-frame-generation.html">
+<meta property="og:image" content="https://fpsmithapp.com/icon-512.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Kare üretimi (Frame Generation) ne zaman açılmalı?", "description": "DLSS kare üretimi, FSR kare üretimi ve çoklu kare üretimi nasıl çalışır, gecikmeyi nasıl etkiler, hangi durumda faydalı, hangi durumda zararlı?", "inLanguage": "tr", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "author": {"@type": "Organization", "name": "FPSmith", "url": "https://fpsmithapp.com/about.html"}, "publisher": {"@type": "Organization", "name": "FPSmith", "logo": {"@type": "ImageObject", "url": "https://fpsmithapp.com/icon-512.png"}}, "mainEntityOfPage": "https://fpsmithapp.com/kare-uretimi-frame-generation.html"}</script>
+<meta name="google-adsense-account" content="ca-pub-1157924658396465">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1157924658396465" crossorigin="anonymous"></script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<header class="sh"><nav class="wrap">
+<a class="logo" href="./"><svg width="36" height="36" viewBox="0 0 42 42" aria-hidden="true"><path d="M10.4 33.6 A15 15 0 1 1 31.6 33.6" fill="none" stroke="#2C3250" stroke-width="4" stroke-linecap="round"/><path d="M10.4 33.6 A15 15 0 1 1 32.5 13.4" fill="none" stroke="#FF8A1F" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-40 21 23)"><rect x="21" y="21.7" width="11" height="2.6" rx="1.2" fill="#C9D0E2"/><rect x="31.5" y="17.5" width="5" height="11" rx="1.4" fill="#E9EDF7"/></g><circle cx="21" cy="23" r="4.2" fill="#D7DDEB"/><circle cx="21" cy="23" r="1.5" fill="#0E1020"/></svg><b><span>FPS</span>mith</b></a>
+<div class="links"><a href="rehberler.html">Rehberler</a><a href="yazilar.html">Yazılar</a><a class="tool" href="arac.html">Ayar aracı</a><a class="lang" href="frame-generation-explained.html" hreflang="en" lang="en">English</a></div>
+</nav></header>
+<main class="wrap">
+<p class="crumb"><a href="./">Ana sayfa</a> › <a href="yazilar.html">Yazılar</a> › Kare üretimi (Frame Generation) ne zaman açılmalı?</p>
+<article class="prose art">
+<h1>Kare üretimi (Frame Generation) ne zaman açılmalı?</h1>
+<p class="upd">FPSmith ekibi · Yayın: 20 Ekim 2026</p>
+<p class="lead">DLSS kare üretimi, FSR kare üretimi ve çoklu kare üretimi nasıl çalışır, gecikmeyi nasıl etkiler, hangi durumda faydalı, hangi durumda zararlı?</p>
+
+<p>Kare üretimi, FPS sayacındaki rakamı neredeyse ikiye katlayabilen bir teknoloji. Ama ölçeklemeden farklı olarak her durumda iyi bir fikir değil. Ne yaptığını bilirsen çok işe yarar, bilmezsen oyunu daha kötü hissettirebilir.</p>
+
+<h2>Nasıl çalışır?</h2>
+<p>Ekran kartı normal şekilde iki kare çizer, kare üretimi ise bu ikisinin arasına yapay zekâ veya hareket bilgisiyle tahmin edilmiş bir ara kare ekler. Ekranda gördüğün kare sayısı artar, hareket daha akıcı görünür. Çoklu kare üretimi (RTX 50 serisi) gerçek iki kare arasına birden fazla kare ekleyebilir.</p>
+<p>Önemli nokta: üretilen kareler oyunun ne kadar hızlı tepki verdiğini değiştirmez. Oyun yalnızca gerçek karelerde senin girişini işler. Hatta yeni kareyi gösterebilmek için bir sonraki gerçek kareyi beklemesi gerektiğinden gecikme biraz artar. Bu yüzden NVIDIA Reflex veya AMD Anti-Lag gibi gecikme azaltıcılar kare üretimiyle birlikte açılır.</p>
+
+<h2>Altın kural: önce taban FPS</h2>
+<p>Kare üretimi, zaten iyi çalışan bir oyunu daha akıcı gösterir; kötü çalışan bir oyunu kurtarmaz. Genel kabul gören kural, kare üretimi olmadan en az 50-60 FPS alabiliyorsan açmak. 30 FPS'ten 60'a çıkarmak için kullanırsan sayaç 60 gösterse de oyun 30 FPS kadar tepkisiz hisseder ve ara karelerde bozulmalar daha belirgin olur.</p>
+<p>FPSmith de bunu hesaba katar. Örneğin RTX 4060 ile Cyberpunk 2077'de, 1080p'de "Sinematik deneyim" modunda araç 2x kare üretimiyle yaklaşık 89 FPS gösteriyor, ama aynı ekranda gerçek kare hızının yaklaşık 51 FPS olduğunu ve gecikmenin hissedilebileceğini de yazıyor.</p>
+
+<h2>Ne zaman açmalı?</h2>
+<ul>
+<li><b>Hikâye ve açık dünya oyunlarında:</b> Taban FPS 60 civarındaysa ve yüksek yenileme hızlı bir monitörün varsa harika sonuç verir.</li>
+<li><b>Yavaş tempolu oyunlarda:</b> Strateji, simülasyon ve uçuş oyunlarında küçük gecikme farkı hissedilmez. İşlemci sınırındaki oyunlarda bile akıcılığı artırır, çünkü ara kareleri ekran kartı üretir.</li>
+</ul>
+
+<h2>Ne zaman kapatmalı?</h2>
+<ul>
+<li><b>Rekabetçi nişancı oyunlarında:</b> Counter-Strike 2, Valorant gibi oyunlarda gecikme FPS sayısından daha önemlidir. FPSmith'in rekabetçi modu bu yüzden kare üretimini önermez.</li>
+<li><b>Taban FPS düşükse:</b> 40 FPS'in altından başlıyorsan önce ayarları veya ölçeklemeyi düşür.</li>
+<li><b>Ekran kartı belleği sınırdaysa:</b> Kare üretimi ek bellek kullanır; 8 GB kartlarda takılmalara yol açabilir.</li>
+</ul>
+
+<h2>Hangi kartta hangisi?</h2>
+<p>DLSS kare üretimi RTX 40 ve RTX 50 serisinde, çoklu kare üretimi RTX 50 serisinde çalışıyor. AMD'nin FSR kare üretimi daha geniş bir kart yelpazesinde çalışır; RX 9000 serisinde yapay zekâ tabanlı sürümü vardır. Oyunun hangi kare üretimini desteklediği de önemli; FPSmith her oyun için desteği ayrı ayrı gösterir.</p>
+
+<aside class="cta"><h2>Kendi sisteminde dene</h2><p>Oyununu, ekran kartını, işlemcini ve hedef FPS&#x27;ini seç; FPSmith hedefi tutturan en güzel ayarları oyunun kendi menü sırasıyla göstersin.</p><a class="btn" href="arac.html">Ayar aracını aç</a></aside>
+</article>
+<section class="rel"><h2>Diğer yazılar</h2><ul class="acards"><li><a href="dlss-fsr-xess-nedir.html"><b>DLSS, FSR ve XeSS nedir? Hangisini açmalısın?</b><span>Görüntü ölçekleme teknolojileri nasıl çalışır, Kalite ve Performans modları arasındaki fark ne, hangi ekran kartında hangisi daha iyi sonuç verir?</span></a></li><li><a href="hangi-ayar-en-cok-fps-yer.html"><b>Hangi grafik ayarı en çok FPS yer? 43 oyunda hesapladık</b><span>Global aydınlatma, hacimsel efektler, gölgeler, dokular: 43 hikâye oyununda FPS&#x27;i en çok etkileyen ayarlar ve görüntüye etkileri.</span></a></li><li><a href="8gb-vram-yeter-mi.html"><b>8 GB VRAM 2026&#x27;da yeter mi?</b><span>RTX 4060 ve RTX 3060 12 GB karşılaştırmasıyla: hangi oyunlarda 8 GB bellek sınırına takılırsın, ne yapmalısın?</span></a></li><li><a href="darbogaz-nedir.html"><b>Darboğaz nedir? Ekran kartın mı işlemcin mi yavaşlatıyor?</b><span>Aynı RX 9070 XT ile üç farklı işlemcide Counter-Strike 2, Fortnite, Cyberpunk 2077 ve Flight Simulator 2024 sonuçları ve darboğazı anlamanın yolları.</span></a></li></ul></section>
+</main>
+<footer class="sf"><div class="wrap">
+<p class="fl"><a href="./">Ana sayfa</a><a href="rehberler.html">Rehberler</a><a href="yazilar.html">Yazılar</a><a href="arac.html">Ayar aracı</a><a href="about.html">Hakkımızda</a><a href="contact.html">İletişim</a><a href="privacy.html">Gizlilik politikası</a></p>
+<p>FPS değerleri bağımsız donanım testlerine dayanan tahminlerdir. Bahsedilen oyun adları, ekran kartları ve işlemciler sahiplerinin markalarıdır. FPSmith bu şirketlerle bağlantılı değildir.</p>
+<p>© 2026 FPSmith</p>
+</div></footer>
+</body>
+</html>

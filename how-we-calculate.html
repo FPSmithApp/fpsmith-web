@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How FPSmith calculates: our method and data sources · FPSmith</title>
+<meta name="description" content="The model behind our frame-rate estimates: graphics card and processor scores, per-game load, setting costs, test sources and limitations.">
+<link rel="canonical" href="https://fpsmithapp.com/how-we-calculate.html">
+<link rel="alternate" hreflang="en" href="https://fpsmithapp.com/how-we-calculate.html">
+<link rel="alternate" hreflang="tr" href="https://fpsmithapp.com/nasil-hesapliyoruz.html">
+<link rel="alternate" hreflang="x-default" href="https://fpsmithapp.com/how-we-calculate.html">
+<meta name="theme-color" content="#0E1020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How FPSmith calculates: our method and data sources · FPSmith">
+<meta property="og:description" content="The model behind our frame-rate estimates: graphics card and processor scores, per-game load, setting costs, test sources and limitations.">
+<meta property="og:url" content="https://fpsmithapp.com/how-we-calculate.html">
+<meta property="og:image" content="https://fpsmithapp.com/icon-512.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How FPSmith calculates: our method and data sources", "description": "The model behind our frame-rate estimates: graphics card and processor scores, per-game load, setting costs, test sources and limitations.", "inLanguage": "en", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "author": {"@type": "Organization", "name": "FPSmith", "url": "https://fpsmithapp.com/about.html"}, "publisher": {"@type": "Organization", "name": "FPSmith", "logo": {"@type": "ImageObject", "url": "https://fpsmithapp.com/icon-512.png"}}, "mainEntityOfPage": "https://fpsmithapp.com/how-we-calculate.html"}</script>
+<meta name="google-adsense-account" content="ca-pub-1157924658396465">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1157924658396465" crossorigin="anonymous"></script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<header class="sh"><nav class="wrap">
+<a class="logo" href="./"><svg width="36" height="36" viewBox="0 0 42 42" aria-hidden="true"><path d="M10.4 33.6 A15 15 0 1 1 31.6 33.6" fill="none" stroke="#2C3250" stroke-width="4" stroke-linecap="round"/><path d="M10.4 33.6 A15 15 0 1 1 32.5 13.4" fill="none" stroke="#FF8A1F" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-40 21 23)"><rect x="21" y="21.7" width="11" height="2.6" rx="1.2" fill="#C9D0E2"/><rect x="31.5" y="17.5" width="5" height="11" rx="1.4" fill="#E9EDF7"/></g><circle cx="21" cy="23" r="4.2" fill="#D7DDEB"/><circle cx="21" cy="23" r="1.5" fill="#0E1020"/></svg><b><span>FPS</span>mith</b></a>
+<div class="links"><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a class="tool" href="arac.html">Settings tool</a><a class="lang" href="nasil-hesapliyoruz.html" hreflang="tr" lang="tr">Türkçe</a></div>
+</nav></header>
+<main class="wrap">
+<p class="crumb"><a href="./">Home</a> › <a href="articles.html">Articles</a> › How FPSmith calculates: our method and data sources</p>
+<article class="prose art">
+<h1>How FPSmith calculates: our method and data sources</h1>
+<p class="upd">By the FPSmith team · Published: October 20, 2026</p>
+<p class="lead">The model behind our frame-rate estimates: graphics card and processor scores, per-game load, setting costs, test sources and limitations.</p>
+
+<p>FPSmith's recommendations and frame-rate estimates come from a model calibrated against independent hardware testing. This page explains openly how the model works, where the data comes from and where it can be wrong.</p>
+
+<h2>1. Hardware scores</h2>
+<p>We keep a gaming performance score for every graphics card and processor. The scores are derived from multi-game comparative testing by sources such as Hardware Unboxed and TechSpot. Processor scores use the Ryzen 7 9800X3D as the reference. For graphics cards we also record memory size, ray tracing performance and supported technologies (DLSS, FSR, XeSS, frame generation).</p>
+<p>We also apply a memory (RAM) correction based on measurements from sources such as Igor's Lab: the effect of DDR4 and DDR5 speeds is calculated per platform (AM4, AM5, Intel generations), and X3D processors are treated as less sensitive to memory speed.</p>
+
+<h2>2. Per-game load</h2>
+<p>For each of the 100 games we modelled how demanding it is on the graphics card and the processor, how much memory it uses and what ray tracing costs. In 57 games the real graphics menu is reproduced one to one: setting names, levels and menu order. In 38 games every setting's cost is specific to that game; 19 Unreal Engine 5 games use the engine's shared settings structure. The remaining games use a general menu suited to their genre, and their guide pages say so clearly.</p>
+
+<h2>3. Choosing settings</h2>
+<p>The tool does not lower settings at random to hit your target. Each setting's frame-rate gain is weighed against its visual impact, and the setting that gains the most frames for the least visual loss is lowered first. This repeats until the target is met. The priorities change with the mode you choose: "Cinematic experience" favours image quality, "Competitive" favours high frame rates and visibility.</p>
+
+<h2>4. Drivers and updates</h2>
+<p>Estimates are made for a specific driver version, shown in the tool. When major game patches or drivers change performance we update the values. Unreleased games are estimated from official system requirements and beta testing and marked as "Estimated"; once a game is out we correct it against real tests.</p>
+
+<h2>5. Limitations</h2>
+<p>Like any estimate, ours is not perfect:</p>
+<ul>
+<li>Different parts of the same game can perform very differently; our estimates target a typical gameplay scene.</li>
+<li>In laptops the same graphics card behaves differently depending on the power its maker allows.</li>
+<li>Background software, temperature and system settings affect results.</li>
+</ul>
+<p>If an estimate is very different on your system, <a href="contact.html">tell us</a>; feedback goes straight into improving the model.</p>
+
+<h2>Independence</h2>
+<p>FPSmith is not affiliated with any game publisher or hardware maker and receives no payment from them. Advertising covers the site's costs and never affects our recommendations.</p>
+
+<aside class="cta"><h2>Try it on your own PC</h2><p>Pick your game, graphics card, processor and FPS target and FPSmith shows the best-looking settings that hit it, in the game&#x27;s own menu order.</p><a class="btn" href="arac.html">Open the settings tool</a></aside>
+</article>
+<section class="rel"><h2>More articles</h2><ul class="acards"><li><a href="dlss-fsr-xess-explained.html"><b>DLSS, FSR and XeSS explained: which one should you use?</b><span>How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.</span></a></li><li><a href="which-settings-cost-the-most-fps.html"><b>Which graphics settings cost the most FPS? We calculated it for 43 games</b><span>Global illumination, volumetrics, shadows, textures: the settings that cost the most frames across 43 story games, and what they do to the image.</span></a></li><li><a href="is-8gb-vram-enough.html"><b>Is 8 GB of VRAM enough in 2026?</b><span>Comparing the RTX 4060 with the 12 GB RTX 3060: which games hit the 8 GB limit, and what you can do about it.</span></a></li><li><a href="cpu-gpu-bottleneck-explained.html"><b>CPU or GPU bottleneck? How to tell what is holding you back</b><span>The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.</span></a></li></ul></section>
+</main>
+<footer class="sf"><div class="wrap">
+<p class="fl"><a href="./">Home</a><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a href="arac.html">Settings tool</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a></p>
+<p>FPS values are estimates based on independent hardware testing. Game titles, graphics cards and processors mentioned are trademarks of their respective owners. FPSmith is not affiliated with them.</p>
+<p>© 2026 FPSmith</p>
+</div></footer>
+</body>
+</html>

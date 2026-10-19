@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frame generation: when should you turn it on? · FPSmith</title>
+<meta name="description" content="How DLSS and FSR frame generation and multi frame generation work, what they do to latency, and when they help or hurt.">
+<link rel="canonical" href="https://fpsmithapp.com/frame-generation-explained.html">
+<link rel="alternate" hreflang="en" href="https://fpsmithapp.com/frame-generation-explained.html">
+<link rel="alternate" hreflang="tr" href="https://fpsmithapp.com/kare-uretimi-frame-generation.html">
+<link rel="alternate" hreflang="x-default" href="https://fpsmithapp.com/frame-generation-explained.html">
+<meta name="theme-color" content="#0E1020">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Frame generation: when should you turn it on? · FPSmith">
+<meta property="og:description" content="How DLSS and FSR frame generation and multi frame generation work, what they do to latency, and when they help or hurt.">
+<meta property="og:url" content="https://fpsmithapp.com/frame-generation-explained.html">
+<meta property="og:image" content="https://fpsmithapp.com/icon-512.png">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Frame generation: when should you turn it on?", "description": "How DLSS and FSR frame generation and multi frame generation work, what they do to latency, and when they help or hurt.", "inLanguage": "en", "datePublished": "2026-10-20", "dateModified": "2026-10-20", "author": {"@type": "Organization", "name": "FPSmith", "url": "https://fpsmithapp.com/about.html"}, "publisher": {"@type": "Organization", "name": "FPSmith", "logo": {"@type": "ImageObject", "url": "https://fpsmithapp.com/icon-512.png"}}, "mainEntityOfPage": "https://fpsmithapp.com/frame-generation-explained.html"}</script>
+<meta name="google-adsense-account" content="ca-pub-1157924658396465">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1157924658396465" crossorigin="anonymous"></script>
+<script src="site.js" defer></script>
+</head>
+<body>
+<header class="sh"><nav class="wrap">
+<a class="logo" href="./"><svg width="36" height="36" viewBox="0 0 42 42" aria-hidden="true"><path d="M10.4 33.6 A15 15 0 1 1 31.6 33.6" fill="none" stroke="#2C3250" stroke-width="4" stroke-linecap="round"/><path d="M10.4 33.6 A15 15 0 1 1 32.5 13.4" fill="none" stroke="#FF8A1F" stroke-width="4" stroke-linecap="round"/><g transform="rotate(-40 21 23)"><rect x="21" y="21.7" width="11" height="2.6" rx="1.2" fill="#C9D0E2"/><rect x="31.5" y="17.5" width="5" height="11" rx="1.4" fill="#E9EDF7"/></g><circle cx="21" cy="23" r="4.2" fill="#D7DDEB"/><circle cx="21" cy="23" r="1.5" fill="#0E1020"/></svg><b><span>FPS</span>mith</b></a>
+<div class="links"><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a class="tool" href="arac.html">Settings tool</a><a class="lang" href="kare-uretimi-frame-generation.html" hreflang="tr" lang="tr">Türkçe</a></div>
+</nav></header>
+<main class="wrap">
+<p class="crumb"><a href="./">Home</a> › <a href="articles.html">Articles</a> › Frame generation: when should you turn it on?</p>
+<article class="prose art">
+<h1>Frame generation: when should you turn it on?</h1>
+<p class="upd">By the FPSmith team · Published: October 20, 2026</p>
+<p class="lead">How DLSS and FSR frame generation and multi frame generation work, what they do to latency, and when they help or hurt.</p>
+
+<p>Frame generation can nearly double the number on your FPS counter. Unlike upscaling, though, it is not always a good idea. Understand what it does and it is very useful; ignore it and it can make a game feel worse.</p>
+
+<h2>How it works</h2>
+<p>The graphics card renders two frames normally, and frame generation inserts a predicted in-between frame built with AI or motion data. You see more frames on screen and motion looks smoother. Multi frame generation (RTX 50 series) can insert more than one frame between two real ones.</p>
+<p>The key point: generated frames do not change how quickly the game responds. The game only processes your input on real frames. It even has to wait for the next real frame before it can show the generated one, so latency rises slightly. That is why latency reducers such as NVIDIA Reflex or AMD Anti-Lag are switched on alongside frame generation.</p>
+
+<h2>The golden rule: base frame rate first</h2>
+<p>Frame generation makes a game that already runs well look smoother; it does not rescue a game that runs badly. The widely accepted rule is to turn it on when you already get at least 50-60 FPS without it. Use it to go from 30 to 60 and the counter may say 60, but the game will feel as unresponsive as 30 and artefacts in the generated frames become more visible.</p>
+<p>FPSmith takes this into account. For example, with an RTX 4060 in Cyberpunk 2077 at 1080p in "Cinematic experience" mode, the tool shows about 89 FPS with 2x frame generation, but on the same screen it notes that the real frame rate is about 51 FPS and that latency may be noticeable.</p>
+
+<h2>When to turn it on</h2>
+<ul>
+<li><b>Story and open-world games:</b> Great results when your base frame rate is around 60 and you have a high-refresh monitor.</li>
+<li><b>Slow-paced games:</b> In strategy, simulation and flight games a small latency increase goes unnoticed. It even smooths processor-limited games, because the in-between frames are made by the graphics card.</li>
+</ul>
+
+<h2>When to leave it off</h2>
+<ul>
+<li><b>Competitive shooters:</b> In Counter-Strike 2 or Valorant latency matters more than the FPS number. That is why FPSmith's competitive mode does not suggest frame generation.</li>
+<li><b>Low base frame rate:</b> If you start below 40 FPS, lower settings or use upscaling first.</li>
+<li><b>Graphics memory at its limit:</b> Frame generation needs extra memory and can cause stutters on 8 GB cards.</li>
+</ul>
+
+<h2>Which card supports what</h2>
+<p>DLSS frame generation runs on RTX 40 and RTX 50 cards, and multi frame generation on RTX 50 cards. AMD's FSR frame generation runs on a wider range of cards, with an AI-based version on the RX 9000 series. The game's own support matters too; FPSmith shows it for every game.</p>
+
+<aside class="cta"><h2>Try it on your own PC</h2><p>Pick your game, graphics card, processor and FPS target and FPSmith shows the best-looking settings that hit it, in the game&#x27;s own menu order.</p><a class="btn" href="arac.html">Open the settings tool</a></aside>
+</article>
+<section class="rel"><h2>More articles</h2><ul class="acards"><li><a href="dlss-fsr-xess-explained.html"><b>DLSS, FSR and XeSS explained: which one should you use?</b><span>How upscaling works, what the Quality and Performance modes really change, and which technology suits your graphics card.</span></a></li><li><a href="which-settings-cost-the-most-fps.html"><b>Which graphics settings cost the most FPS? We calculated it for 43 games</b><span>Global illumination, volumetrics, shadows, textures: the settings that cost the most frames across 43 story games, and what they do to the image.</span></a></li><li><a href="is-8gb-vram-enough.html"><b>Is 8 GB of VRAM enough in 2026?</b><span>Comparing the RTX 4060 with the 12 GB RTX 3060: which games hit the 8 GB limit, and what you can do about it.</span></a></li><li><a href="cpu-gpu-bottleneck-explained.html"><b>CPU or GPU bottleneck? How to tell what is holding you back</b><span>The same RX 9070 XT with three different processors in Counter-Strike 2, Fortnite, Cyberpunk 2077 and Flight Simulator 2024, plus how to spot a bottleneck yourself.</span></a></li></ul></section>
+</main>
+<footer class="sf"><div class="wrap">
+<p class="fl"><a href="./">Home</a><a href="guides.html">Guides</a><a href="articles.html">Articles</a><a href="arac.html">Settings tool</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy policy</a></p>
+<p>FPS values are estimates based on independent hardware testing. Game titles, graphics cards and processors mentioned are trademarks of their respective owners. FPSmith is not affiliated with them.</p>
+<p>© 2026 FPSmith</p>
+</div></footer>
+</body>
+</html>
